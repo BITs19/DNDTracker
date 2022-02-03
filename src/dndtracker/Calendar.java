@@ -6,6 +6,7 @@ import java.util.Queue;
 public class Calendar {
     private Queue<Month> months;
     private Month currentMonth;
+    private int numOfMonths;
     private int numOfDaysInWeek;
     private int dayOfWeek;
 
@@ -13,8 +14,9 @@ public class Calendar {
         months = new LinkedList<Month>();
     }
 
-    public Calendar(int numOfDaysInWeek) {
+    public Calendar(int numOfDaysInWeek, int numOfMonths) {
         this.setNumOfDaysInWeek(numOfDaysInWeek);
+        this.setNumOfMonths(numOfMonths);
         months = new LinkedList<Month>();
     }
 
@@ -47,4 +49,13 @@ public class Calendar {
         currentMonth = months.remove();
         return currentMonth;
     }
+
+    public int getNumOfMonths() {
+        return numOfMonths;
+    }
+
+    private void setNumOfMonths(int numOfMonths) {
+        this.numOfMonths = numOfMonths;
+    }
+
 }
