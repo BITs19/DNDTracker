@@ -7,14 +7,13 @@ import java.util.Scanner;
 public class Receiver {
 	ArrayList<String> currentArgs;
 	ArrayList<Observer> observers;
-	
-	ArrayList<String> months;
-	String currentMonth = "";
-	
+
+	Calendar calendar;
+
 	public Receiver() {
 		initArrays();
 	}
-	
+
 	public Receiver(String path) {
 		initArrays();
 		File f = new File(path);
@@ -22,54 +21,49 @@ public class Receiver {
 		try {
 			f.createNewFile();
 			in = new Scanner(f);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.err.println("Error creating file; " + e);
 			System.exit(1);
 		}
-		while(in.hasNext()) {
-			months.add(in.nextLine());
+		int numOfMonths = in.nextInt();
+		while (numOfMonths-- > 0) {
+			String name = in.next();
+			int numOfDays = in.nextInt();
+			calendar.addMonth(name, numOfDays);
 		}
-		currentMonth = months.get(0);
 	}
-	
-	public ArrayList<String> getArgs(){
+
+	public ArrayList<String> getArgs() {
 		return currentArgs;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void setArgs(ArrayList<String> in) {
-		currentArgs = (ArrayList<String>)in.clone();
+		currentArgs = (ArrayList<String>) in.clone();
 	}
-	
+
 	public void registerObserver(Observer o) {
 		observers.add(o);
 	}
-	
+
 	public void removeObserver(Observer o) {
 		observers.remove(o);
 	}
-	
+
 	private void notifyAll(String s) {
-		for(Observer o : observers) {
+		for (Observer o : observers) {
 			o.notify(s);
 		}
 	}
-	
+
 	private void initArrays() {
 		observers = new ArrayList<Observer>();
 		currentArgs = new ArrayList<String>();
-		months = new ArrayList<String>();
+		calendar = new Calendar();
 	}
-	
+
 	public void nextMonth() {
-		int index = months.indexOf(currentMonth);
-		index++;
-		if(index >= months.size()) {
-			index = 0;
-		}
-		
-		currentMonth = months.get(index);
-		
-		notifyAll("MONTH="+currentMonth);
+		calendar.nextMonth();
+		notifyAll("MONTH=" + calendar.getCurrentMonthName());
 	}
 }
