@@ -24,4 +24,11 @@ hs_err_pid*
 
 .project
 .vscode
-bin/
+bin/module-info.class
+bin/dndtracker/Application.class
+bin/dndtracker/Command.class
+bin/dndtracker/Echo.class
+bin/dndtracker/Next.class
+bin/dndtracker/Observer.class
+bin/dndtracker/Receiver.class
+.project
