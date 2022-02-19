@@ -9,14 +9,16 @@ public class Calendar {
     private int numOfMonths;
     private int numOfDaysInWeek;
     private int dayOfWeek;
+    private int yearNumber;
 
     public Calendar() {
         months = new LinkedList<Month>();
     }
 
-    public Calendar(int numOfDaysInWeek, int numOfMonths) {
+    public Calendar(int numOfDaysInWeek, int numOfMonths, int yearNumber) {
         this.setNumOfDaysInWeek(numOfDaysInWeek);
         this.setNumOfMonths(numOfMonths);
+        this.setYearNumber(yearNumber);
         months = new LinkedList<Month>();
     }
 
@@ -56,6 +58,21 @@ public class Calendar {
 
     private void setNumOfMonths(int numOfMonths) {
         this.numOfMonths = numOfMonths;
+    }
+
+    public String toString() {
+        String out = "";
+        out += this.getYearNumber() + " " + this.getNumOfDaysInWeek() + " " + this.getDayOfWeek() + " "
+                + this.getNumOfMonths() + "\n";
+        return out;
+    }
+
+    public int getYearNumber() {
+        return yearNumber;
+    }
+
+    private void setYearNumber(int yearNumber) {
+        this.yearNumber = yearNumber;
     }
 
 }
