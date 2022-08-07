@@ -43,6 +43,7 @@ public class Application {
 		out.add(new Echo());
 		out.add(new AddMonth());
 		out.add(new SetPath());
+		out.add(new Save());
 		return out;
 	}
 
