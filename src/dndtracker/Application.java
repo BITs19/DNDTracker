@@ -3,6 +3,8 @@ package dndtracker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import dndtracker.Interfaces.*;
+import dndtracker.Commands.*;
 
 public class Application {
 	
@@ -21,21 +23,26 @@ public class Application {
 			args = new ArrayList<String>(Arrays.asList(tokens));
 			args.remove(0);
 			receiver.setArgs(args);
-			
+			boolean executed = false;
 			for(Command c : commands) {
 				if(c.command(command)) {
 					c.execute(receiver);
+					executed = true;
 					break;
 				}
 			}
+			if(!executed && !command.equals("END")) System.out.println("No command found matching: " + command);
 		}while(!command.equals("END"));
-			
+		
+		receiver.save();
 		stdin.close();
 	}
 
 	protected static ArrayList<Command> getCommands(){
 		ArrayList<Command> out = new ArrayList<Command>();
 		out.add(new Echo());
+		out.add(new AddMonth());
+		out.add(new SetPath());
 		return out;
 	}
 

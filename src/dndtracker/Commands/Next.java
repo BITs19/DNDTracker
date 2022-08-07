@@ -1,15 +1,13 @@
-package dndtracker;
+package dndtracker.Commands;
 
 import java.util.ArrayList;
+import dndtracker.Interfaces.*;
 
 public class Next implements Command {
 
 	@Override
 	public void execute(Receiver receiver) {
 		ArrayList<String> args = receiver.getArgs();
-		if(args.size() < 1) return;
-		String comm = args.get(0);
-		if(comm.equals("MONTH")) receiver.nextMonth();
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package dndtracker;
+package dndtracker.Interfaces;
 
 public interface Command {
 	public void execute(Receiver receiver); // executes the command
