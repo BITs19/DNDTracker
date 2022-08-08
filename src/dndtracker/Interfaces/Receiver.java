@@ -7,30 +7,24 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 import dndtracker.DataTypes.Calendar;
+import dndtracker.Utility.NestedBracketParser;
 
 public class Receiver {
 	private ArrayList<String> currentArgs;
 	private ArrayList<Observer> observers;
 	private Calendar calendar;
+	private int currentDate;
+	private int currentYear;
 	private String savePath = null;
+	
 	public Receiver() {
 		init();
 	}
 	
 	public Receiver(String path) {
 		init();
-		File f = new File(path);
-		String saveData;
-		try {
-			f.createNewFile();
-			Path filePath = f.toPath();
-			saveData = Files.readString(filePath);
-			savePath = path;
-		}catch(Exception e) {
-			System.err.println("Error creating file; " + e);
-			System.exit(1);
-		}
-		
+		savePath = path;
+		this.parse();
 	}
 	
 	public ArrayList<String> getArgs(){
@@ -94,7 +88,30 @@ public class Receiver {
 		StringBuilder out = new StringBuilder();
 		out.append("{Receiver:");
 		out.append(calendar.toString());
+		out.append(";currentDate=");
+		out.append(currentDate);
+		out.append(";currentYear=");
+		out.append(currentYear);
 		out.append(";}");
 		return out.toString();
+	}
+	
+	public void parse(String in) {
+		System.out.println(in);
+	}
+	
+	public void parse() {
+		File f = new File(savePath);
+		String saveData = "";
+		try {
+			f.createNewFile();
+			Path filePath = f.toPath();
+			saveData = Files.readString(filePath);
+		}catch(Exception e) {
+			System.err.println("Error creating file; " + e);
+			System.exit(1);
+		}
+		saveData = NestedBracketParser.parse(saveData);
+		this.parse(saveData);
 	}
 }
