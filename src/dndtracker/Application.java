@@ -44,6 +44,7 @@ public class Application {
 		out.add(new AddMonth());
 		out.add(new SetPath());
 		out.add(new Save());
+		out.add(new Parse());
 		return out;
 	}
 
