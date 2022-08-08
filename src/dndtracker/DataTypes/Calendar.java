@@ -10,7 +10,6 @@ import dndtracker.Utility.SimpleMatcher;
 
 public class Calendar {
 	private List<Month> months;
-	private int currentDate;
 	private List<String> weekDays;
 
 	public Calendar() {
@@ -26,25 +25,12 @@ public class Calendar {
 		return months;
 	}
 
-	public void setDate(int in) {
-		currentDate = in % getDaysInYear();
-	}
-
-	public int getDate() {
-		return currentDate;
-	}
-
 	public void setWeekDays(List<String> in) {
 		weekDays = in;
 	}
 
 	public List<String> getWeekDays(){
 		return weekDays;
-	}
-
-	public int incrementDate() {
-		setDate(currentDate + 1);
-		return getDate();
 	}
 
 	public String toString() {
@@ -56,9 +42,7 @@ public class Calendar {
 				out.append(',');
 			}
 		}
-		out.append("];currentDate=");
-		out.append(getDate());
-		out.append(";weekdays=[");
+		out.append("];weekdays=[");
 		for(String s : weekDays) {
 			out.append(s);
 			if(s != weekDays.get(weekDays.size() - 1)) {
@@ -80,7 +64,7 @@ public class Calendar {
 		return out;
 	}
 
-	public String getCurrentDateString() {		
+	public String getCurrentDateString(int currentDate) {		
 		int tempDay = 0;
 		int index = 0;
 		Month m = new Month();
@@ -113,11 +97,6 @@ public class Calendar {
 			}
 		}
 		out.setMonths(outMonths);
-
-		Matcher currentDateMatch = SimpleMatcher.getMatcher("name=(\\d+);", in);
-		if(currentDateMatch.find()) {
-			out.setDate(Integer.parseInt(currentDateMatch.group(1)));
-		}
 
 		Matcher weekDaysMatch = SimpleMatcher.getMatcher("weekDays=\\[([^\\]]*)\\]", in);
 		if(weekDaysMatch.find()) {
