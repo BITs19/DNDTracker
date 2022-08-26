@@ -1,10 +1,12 @@
 package dndtracker.DataTypes;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 
 import dndtracker.Utility.SimpleMatcher;
 
-public class Month {
+public class Month implements Serializable {
+	private static final long serialVersionUID = -5358513768313189204L;
 	private int days;
 	private String name;
 

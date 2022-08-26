@@ -1,7 +1,7 @@
 package dndtracker.Commands;
 
+import dndtracker.DataTypes.Receiver;
 import dndtracker.Interfaces.Command;
-import dndtracker.Interfaces.Receiver;
 
 public class Save implements Command {
 

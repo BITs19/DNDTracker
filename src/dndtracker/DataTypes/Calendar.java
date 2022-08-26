@@ -1,5 +1,6 @@
 package dndtracker.DataTypes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.regex.Matcher;
 import dndtracker.Utility.NestedBracketParser;
 import dndtracker.Utility.SimpleMatcher;
 
-public class Calendar {
+public class Calendar implements Serializable {
+	private static final long serialVersionUID = -2692098215974729114L;
 	private List<Month> months;
 	private int currentDate;
 	private List<String> weekDays;

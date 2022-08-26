@@ -1,6 +1,8 @@
 package dndtracker.Commands;
 
 import java.util.ArrayList;
+
+import dndtracker.DataTypes.Receiver;
 import dndtracker.Interfaces.*;
 
 public class Echo implements Command {

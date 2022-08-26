@@ -4,8 +4,8 @@ import java.util.List;
 
 import dndtracker.DataTypes.Calendar;
 import dndtracker.DataTypes.Month;
+import dndtracker.DataTypes.Receiver;
 import dndtracker.Interfaces.Command;
-import dndtracker.Interfaces.Receiver;
 
 public class AddMonth implements Command {
 
