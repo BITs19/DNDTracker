@@ -29,6 +29,7 @@ public class Application {
 				if(c.command(command)) {
 					c.execute(receiver);
 					executed = true;
+					if(receiver.getNextReceiver() != null) receiver = receiver.getNextReceiver();
 					break;
 				}
 			}
@@ -45,6 +46,7 @@ public class Application {
 		out.add(new AddMonth());
 		out.add(new SetPath());
 		out.add(new Save());
+		out.add(new Load());
 		return out;
 	}
 

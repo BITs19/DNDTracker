@@ -17,6 +17,15 @@ public class Receiver implements Serializable {
 	private ArrayList<Observer> observers;
 	private Calendar calendar;
 	private String savePath = null;
+	private Receiver nextReceiver;
+	public Receiver getNextReceiver() {
+		return nextReceiver;
+	}
+
+	public void setNextReceiver(Receiver nextReceiver) {
+		this.nextReceiver = nextReceiver;
+	}
+
 	public Receiver() {
 		init();
 	}
@@ -72,6 +81,10 @@ public class Receiver implements Serializable {
 	
 	public void setPath(String path) {
 		savePath = path;
+	}
+	
+	public String getPath() {
+		return savePath;
 	}
 	
 	public boolean save() {
