@@ -10,6 +10,7 @@ import dndtracker.DataTypes.Calendar;
 import dndtracker.Utility.NestedBracketParser;
 
 public class Receiver {
+
 	private ArrayList<String> currentArgs;
 	private ArrayList<Observer> observers;
 	private Calendar calendar;
@@ -97,7 +98,14 @@ public class Receiver {
 	}
 	
 	public void parse(String in) {
-		System.out.println(in);
+		int startingIndex = 0;
+		String result;
+		while(startingIndex < in.length()) {
+			result = NestedBracketParser.parse(in, startingIndex);
+			if(result.substring(0, "Calendar".length()).equals("Calendar"))
+				calendar = Calendar.parse(result);
+			startingIndex += result.length();
+		}
 	}
 	
 	public void parse() {

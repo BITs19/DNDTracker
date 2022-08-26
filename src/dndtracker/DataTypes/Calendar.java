@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import dndtracker.Utility.NestedBracketParser;
 import dndtracker.Utility.SimpleMatcher;
 
-public class Calendar {
+public class Calendar{
 	private List<Month> months;
 	private List<String> weekDays;
 
@@ -88,12 +88,12 @@ public class Calendar {
 			String match = months.group(1);
 			if (match.length() != 0) {
 				int startingIndex = 0;
-				while(startingIndex < match.length()) {
+				while (startingIndex < match.length()){
 					String monthString = NestedBracketParser.parse(match, startingIndex);
-					startingIndex += monthString.length();
+					startingIndex += monthString.length() + 3;
 					Month month = Month.parse(monthString);
 					outMonths.add(month);
-				}
+				} 
 			}
 		}
 		out.setMonths(outMonths);

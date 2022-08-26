@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 
 import dndtracker.Utility.SimpleMatcher;
 
-public class Month {
+public class Month{
 	private int days;
 	private String name;
 
@@ -40,7 +40,7 @@ public class Month {
 		if (nameMatcher.find()) {
 			out.setName(nameMatcher.group(1));
 		}
-		Matcher daysMatcher = SimpleMatcher.getMatcher("days=(\\d)*;", in);
+		Matcher daysMatcher = SimpleMatcher.getMatcher("days=(\\d*);", in);
 		if (daysMatcher.find()) {
 			out.setDays(Integer.parseInt(daysMatcher.group(1)));
 		}
