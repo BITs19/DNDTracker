@@ -24,7 +24,7 @@ public class NestedBracketParser {
 			return in;
 		}
 		
-		int endIndex = startIndex;
+		int endIndex = startIndex + 1;
 		int levelCount = 1;
 		while(levelCount > 0) {
 			if(in.charAt(endIndex) == closingBrace)
