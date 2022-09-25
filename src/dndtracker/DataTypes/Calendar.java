@@ -97,6 +97,7 @@ public class Calendar implements Serializable {
 		return out;
 	}
 
+	@Deprecated
 	public static Calendar parse(String in) {
 		Calendar out = new Calendar();
 

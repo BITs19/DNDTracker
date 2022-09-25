@@ -36,6 +36,7 @@ public class Month implements Serializable {
 		return builder.toString();
 	}
 
+	@Deprecated
 	public static Month parse(String in) {
 		Month out = new Month();
 		Matcher nameMatcher = SimpleMatcher.getMatcher("name=([a-z0-9]*);", in);
